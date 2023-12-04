@@ -1,17 +1,38 @@
 import './App.css';
+import Shop from './components/Shop';
+import Menu from './components/Menu';
+import Cards from './components/Cards';
+import Craft from './components/Craft';
+import Drop from './components/Drop';
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Menu/>,
+  },
+  {
+    path: "/shop",
+    element: <Shop />,
+  },
+  {
+    path: "/cards",
+    element: <Cards />,
+  },
+  {
+    path: "/craft",
+    element: <Craft />,
+  },
+  {
+    path: "/drop",
+    element: <Drop />,
+  },
+]);
+
 
 function App() {
   return (
-    <div className="App">
-      <div className='header'>Главное меню</div>
-      <div className='container'>
-        <div className='cards'>Карточки</div>
-        <div className='shop'>Магазин</div>
-        <div className='drop'>Кейсы</div>
-        <div className='craft'>Крафт</div>
-      </div>
-      <div className='close'>Закрыть</div>
-    </div>
+    <RouterProvider router={router} />
   );
 }
 
