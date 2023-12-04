@@ -40,15 +40,27 @@ function get_attribute(id,attribute, callback){
         db.close();
     });
 }
-// ---------------------------
+// перевод строки в массив
 function format_list(list){
-    list = list.replace(' ','').replace('[','').replace(']','').split(',')
+    list = list.replace(' ','').split(',')
     return list
 }
-
-function add_atribute(list, attribute, edit){
+// добавление элемента в массив значения функции
+function add_atribute(id, list, attribute, edit){
     list = format_list(list)
     list.push(edit)
-    return list
+    list = list.join(',')
+    const db = new sql.Database('db/base.db');
+    const query = `
+        UPDATE users
+        SET ${attribute} = ?
+        WHERE user_id = ?
+    `;
+    db.run(query, [list, id])
+    db.close();
+
 }
-console.log(add_atribute('[1,2,3]', 'friends', '4'))
+// get_attribute(333,'friends', function(err, row){
+//     let list = row
+//     add_atribute(333,list, 'friends', '3')
+// })
