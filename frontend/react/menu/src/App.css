@@ -3,7 +3,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: Arial, Helvetica, sans-serif;
-  color: white;
+  color: rgb(199, 215, 212);
 }
 html{
   height: 100%;
@@ -11,7 +11,7 @@ html{
 
 body{
   height: 100%;
-  background: linear-gradient(180deg, rgba(2, 0, 36, 1) 18%, rgb(27, 4, 43) 99%) no-repeat;
+  background: linear-gradient(180deg, rgb(4, 0, 73) 30%, rgb(58, 31, 0) 70%) no-repeat;
   margin: 0;
 }
 
@@ -26,10 +26,11 @@ body{
 
 .header{
   font-size: 4vh;
-  border-bottom: 3px solid white; 
+  border-bottom: 3px solid rgb(255, 255, 255); 
   height: 7%;
   padding-top: 10px; 
   padding-bottom: 10px;
+  
 }
 
 
@@ -40,10 +41,12 @@ body{
   height: 16vh;
   background-color: rgb(85, 0, 0);
   margin: 10px;
+  
 }
 
 .container div:active {
   background-color: rgb(58, 0, 0);
+  
 }
 
 
@@ -56,6 +59,7 @@ body{
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-around;
+  
 }
 
 
@@ -70,7 +74,10 @@ body{
   width: 100%;
   text-align: center;
   height: 5vh;
-  background-color: brown;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+    background: linear-gradient(90deg, rgb(255, 0, 0) 40%,  rgb(34, 0, 255) 100%) no-repeat;
+  
 }
 
 
@@ -82,7 +89,31 @@ a{
   display: flex;
   align-items: center;
   justify-content: center;
+  
 }
 
-
+.cards{
+  background-image: url('icon/icon002.png');
+  background-size: 160px;
+  background-position: 0px -0.6vh;
+  border-radius: 15px;
+}
+.shop{
+  background-image: url('icon/icon001.png');
+  background-size: 160px;
+  background-position: 0px -1.3vh;
+  border-radius: 15px;
+}
+.drop{
+  background-image: url('icon/icon003.png');
+  background-size: 160px;
+  background-position: 0px -0.4vh;
+  border-radius: 15px;
+}
+.craft{
+  background-image: url('icon/icon004.png');
+  background-size: 160px;
+  background-position: 0px -0.4vh;
+  border-radius: 15px;
+}
 
