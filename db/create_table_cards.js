@@ -8,7 +8,8 @@ db.serialize(() => {
       card_id INT PRIMARY KEY,
       name TEXT,
       rarity TEXT,
-      price INT)
+      price INT,
+      file BLOB)
       `);
 });
 
