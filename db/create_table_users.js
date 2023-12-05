@@ -1,6 +1,6 @@
 const sql = require('sqlite3').verbose();
 
-const db = new sql.Database('db/base.db');
+const db = new sql.Database('CARD_BOTS/db/base.db');
 
 db.serialize(() => {
   db.run(`
