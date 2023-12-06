@@ -1,3 +1,6 @@
 #vs code
 .vscode
+# node
+node_modules
+# git
 README.md
