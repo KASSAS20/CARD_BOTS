@@ -39,6 +39,7 @@ function new_case(id,name, price, rarity, file){
     VALUES (?,?,?,?,?)`;
     db.run(query, [id, name, rarity, price, img]);
     db.close();
+    
 }
 
 

@@ -1,5 +1,6 @@
 const db = require('../db/edit_db.js')
 const fs = require('fs');
+
 const TelegramBot = require('node-telegram-bot-api');
 const token = '6981900970:AAE8rDSIM46MDoLfK5I1f19QXreWmf9nDNE';
 
@@ -13,12 +14,16 @@ bot.onText(/\/get_image_cards (.+)/, function (msg, match) {
     })
 });
 
-bot.on('message', (msg) => {
-    const chatId = msg.chat.id;
-    if (msg.photo && msg.caption == '/new_card') {
+bot.on('message', async(msg) => {
+    // const chatId = msg.chat.id;
+    list_arg = msg.caption.split(' ')
+    console.log(list_arg);
+    if (msg.photo && list_arg[0] == '/new_card') {
         const photo = msg.photo;
         const fileId = photo[photo.length - 1].file_id;
-        bot.downloadFile(fileId, 'admin/img',(error, filePath) => {
-                fs.readdir('admin/img', (_, files) => {
-                    console.log(files);
-                })})}})
+        await bot.downloadFile(fileId, 'admin/img')
+        await bot.getFile(fileId).then((fileInfo) => {
+            const fileName = fileInfo.file_path.split('/').pop()
+            db.new_card(list_arg[1], list_arg[2], list_arg[3], `admin/img/${fileName}`)
+            fs.unlink(`admin/img/${fileName}`, (err) => {;})
+            })}})
