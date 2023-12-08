@@ -1,0 +1,80 @@
+html{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+body{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+.background{
+    width: 100%;
+    position: fixed;
+    background-image: url('src/background/003.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.menu{
+    position: absolute;
+    display: flex;
+    width: 100%;
+    height: auto;
+}
+
+.id{
+    position: relative;
+    width: 10vh;
+    height: auto;
+    color: rgb(231, 220, 218);
+    font-size: 2vh;
+}
+
+.balance{
+    position: relative;
+    width: 10vh;
+    height: auto;
+    color: rgb(231, 220, 218);
+    font-size: 4vh;
+    left: 67.5%;
+    transform: translateX(-50%);
+}
+
+.icon{
+    position: relative;
+    width: 12vh;
+    height: 12vh;
+    margin-bottom: 2vh;
+    background-color: aqua;
+    top: 12.5%;
+    left: 50%;
+    transform: translate(-50%, 125%);
+    border-radius: 15px;
+    border: 2px solid #d16913;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+.game{    
+    background-image: url('src/icon/icon001.png');
+    background-size: 13vh;
+}
+.cards{    
+    background-image: url('src/icon/icon002.png');
+}
+
+.cases{    
+    background-image: url('src/icon/icon003.png');
+}
+
+.craft{    
+    background-image: url('src/icon/icon004.png');
+}
