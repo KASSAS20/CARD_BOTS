@@ -1,7 +1,2 @@
 # vscode
 .vscode
-# node
-package-lock.json
-node_modules
-# telegram
-admin/key.js
