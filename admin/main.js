@@ -1,9 +1,9 @@
 const db = require('../db/edit_db.js')
-const admin_token = require('./key.js')
+// const admin_token = require('./key.js')
 const fs = require('fs');
 
 const TelegramBot = require('node-telegram-bot-api');
-const token = admin_token.admin_bot_token
+const token = '6981900970:AAE8rDSIM46MDoLfK5I1f19QXreWmf9nDNE'
 
 let bot = new TelegramBot(token, { polling: true });
 
