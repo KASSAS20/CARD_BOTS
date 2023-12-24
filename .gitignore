@@ -1,8 +1,0 @@
-# vscode
-.vscode
-# node
-node_modules
-package-lock.json
-# tg
-admin/key.js
-
