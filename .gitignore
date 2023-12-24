@@ -1,5 +1,8 @@
 # vscode
 .vscode
 # node
-package-lock.json
 node_modules
+package-lock.json
+# tg
+admin/key.js
+

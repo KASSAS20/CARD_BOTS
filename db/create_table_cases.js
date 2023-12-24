@@ -4,11 +4,12 @@ const db = new sql.Database('db/base.db');
 
 db.serialize(() => {
   db.run(`
-    CREATE TABLE IF NOT EXISTS cards (
-      card_id INT PRIMARY KEY,
+    CREATE TABLE IF NOT EXISTS cases (
+      case_id INT PRIMARY KEY,
       name TEXT,
-      rarity TEXT,
+      contents TEXT,
       price INT,
+      rarity TEXT,
       file BLOB)
       `);
 });
