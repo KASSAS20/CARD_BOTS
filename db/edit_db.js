@@ -32,13 +32,21 @@ function new_card(name, rarity, price, file){
 
 
 //создание кейса
-function new_case(id,name, price, rarity, file){
+function new_case(name, price, rarity, file){
     const img  = fs.readFileSync(file);
     const db = new sql.Database(db_path);
-    query = `INSERT INTO cases (case_id, name, rarity, price, file)
-    VALUES (?,?,?,?,?)`;
-    db.run(query, [id, name, rarity, price, img]);
-    db.close();
+
+    query = `SELECT MAX(case_id) AS last_unique_key FROM cases`;
+    db.get(query, [], (_, row) => {
+        id = row.last_unique_key
+        if (id == null) {
+            id = 0
+        }
+        id += 1
+        query = `INSERT INTO cases (case_id, name, rarity, price, file)
+        VALUES (?,?,?,?,?)`;
+        db.run(query, [id, name, rarity, price, img]);
+        db.close();})
     
 }
 
@@ -93,8 +101,8 @@ function edit_balance(id, edit){
     SET balance = ?
     WHERE user_id = ?
     `;
-    get_attribute(id,'balance', function(err, balance){
-    balance += edit;
+    get_attribute_user(id,'balance', function(err, balance){
+    balance += Number(edit);
     db.run(query, [balance, id])
     db.close();
 });
@@ -145,28 +153,27 @@ function format_list(list){
 
 
 // добавление элемента в массив значения атрибута
-function add_atribute_user(id, list, attribute, edit){
+function add_atribute(table, id, attribute, list){
     list = format_list(list)
-    list.push(edit)
+    // list.push(edit)
     list = list.join(',')
     const db = new sql.Database(db_path);
     const query = `
-    UPDATE users
+    UPDATE ${table}
     SET ${attribute} = ?
-    WHERE user_id = ?
+    WHERE ${table.slice(0, -1)}_id = ?
     `;    
     db.run(query, [list, id])
     db.close();
 }        
 
-module.exports.add_atribute_user = add_atribute_user;
+module.exports.add_atribute = add_atribute;
 module.exports.new_user = new_user;
 module.exports.new_card = new_card;
 module.exports.new_case = new_case;
 module.exports.remove_user = remove_user;
 module.exports.remove_card = remove_card;
 module.exports.remove_case = remove_case;
-module.exports.remove_user = remove_user;
 module.exports.get_attribute_user = get_attribute_user;
 module.exports.get_attribute_card = get_attribute_card;
 module.exports.get_file_from_card = get_file_from_card;

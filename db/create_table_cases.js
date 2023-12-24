@@ -7,6 +7,7 @@ db.serialize(() => {
     CREATE TABLE IF NOT EXISTS cases (
       case_id INT PRIMARY KEY,
       name TEXT,
+      contents TEXT,
       price INT,
       rarity TEXT,
       file BLOB)
